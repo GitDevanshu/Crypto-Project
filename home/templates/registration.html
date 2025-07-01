@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Registration Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0d1117;
+      font-family: "Segoe UI", sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      width: 98%;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      color: #00ffa2;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffffcc;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #00ffa2;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 26px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 70px;
+        right: 30px;
+        padding: 15px;
+        border-radius: 12px;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    .register-container {
+      margin-top: 130px;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 40px;
+      width: 370px;
+      box-shadow: 0 0 30px rgba(0, 255, 162, 0.25), 0 0 10px rgba(0, 255, 162, 0.1);
+      color: white;
+      animation: slideIn 0.6s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0px); opacity: 1; }
+    }
+
+    form#registerForm {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #00ffa2;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      color: #aaa;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:valid + label {
+      top: -10px;
+      font-size: 12px;
+      color: #00ffa2;
+    }
+
+    .toggle {
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00ffb3;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+      background-color: #00e6a8;
+      box-shadow: 0 0 15px #00ffb3, 0 0 30px #00ffb3;
+    }
+
+    .login-link {
+      text-align: center;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .login-link a {
+      color: #00ffa2;
+      text-decoration: none;
+    }
+
+    .error-msg {
+      color: #ff4d4d;
+      text-align: center;
+      margin-top: -15px;
+      font-size: 14px;
+    }
+
+    a:visited {
+      color: #fff;
+    }
+
+    .site-footer {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 20px 15px 10px;
+      color: #00ffb3;
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto 10px;
+      padding: 0 10px;
+      width: 100%;
+    }
+
+    .footer-left,
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-left h3 {
+      color: #00ffb3;
+      margin: 0;
+    }
+
+    .footer-left p {
+      color: #aaa;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .footer-right a {
+      color: #ccc;
+      margin: 0 10px;
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-right a:hover {
+      color: #00ffb3;
+      text-shadow: 0 0 5px #00ffb3;
+    }
+
+    .footer-bottom {
+      color: #777;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">CoinSentinel</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="tableform.html">Table Form</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="register-container">
+    <form id="registerForm">
+      <h2>Create Account</h2>
+
+      <div class="input-group">
+        <input type="text" id="fullname" required />
+        <label for="fullname">Full Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="email" required />
+        <label for="email">Email</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="username" required />
+        <label for="username">Username</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" id="password" required />
+        <label for="password">Password</label>
+        <span class="toggle" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <div class="error-msg" id="errorMsg"></div>
+
+      <button type="submit">Register</button>
+      <p class="login-link">
+        Already have an account? <a href="/login/">Login here</a>
+      </p>
+    </form>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>CoinSentinel</h3>
+        <p>Stay connected. Stay secure.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 MyGlassSite. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("registerForm");
+    const errorMsg = document.getElementById("errorMsg");
+    const passwordInput = document.getElementById("password");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const fullname = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!fullname || !email || !username || !password) {
+        errorMsg.textContent = "Please fill in all fields.";
+        errorMsg.style.color = "#ff4d4d";
+        return;
+      }
+
+      if (!email.includes("@") || !email.includes(".")) {
+        errorMsg.textContent = "Please enter a valid email.";
+        errorMsg.style.color = "#ff4d4d";
+        return;
+      }
+
+      errorMsg.style.color = "lightgreen";
+      errorMsg.textContent = "Registration successful!";
+    });
+
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    function togglePassword() {
+      const type = passwordInput.getAttribute("type");
+      passwordInput.setAttribute(
+        "type",
+        type === "password" ? "text" : "password"
+      );
+    }
+  </script>
+</body>
+</html>

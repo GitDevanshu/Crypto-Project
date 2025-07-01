@@ -1,0 +1,89 @@
+/* — News 页面响应式调整 — */
+@media (max-width: 1024px) {
+  /* 卡片、列表稍微紧凑一点 */
+  .card {
+    padding: 16px;
+  }
+  .card h3 {
+    font-size: 18px;
+  }
+  .card ul li {
+    font-size: 13px;
+  }
+  .toggle-buttons button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  nav {
+    flex-wrap: wrap;
+    padding: 10px 20px;
+  }
+  .ticker-wrapper {
+    order: 2;
+    width: 100%;
+    margin-top: 8px;
+    max-width: 100%;
+  }
+  .logo {
+    order: 1;
+  }
+
+  
+  .sidebar {
+    display: none;
+  }
+
+  
+  .container {
+    flex-direction: column;
+    margin-top: 120px; 
+    padding: 20px;
+  }
+  .main {
+    margin-left: 0 !important;
+    padding: 0;
+  }
+
+  
+  .card {
+    width: 100% !important;
+    margin: 0 0 20px;
+  }
+
+  
+  .card ul {
+    padding-left: 0;
+  }
+  .card ul li {
+    white-space: normal;
+  }
+
+ 
+  .toggle-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .toggle-buttons button {
+    flex: 1;
+    text-align: center;
+  }
+
+  #multiChart,
+  #candlestickChart {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  #newsSearch {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  #searchResults {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}

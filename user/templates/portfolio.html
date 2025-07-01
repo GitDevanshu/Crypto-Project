@@ -1,0 +1,139 @@
+{% extends 'layouts/base2.html'%}
+{% load static %}
+{% block content %}
+  <div class="portfolio-container">
+        <div class="content">
+          <div class="cards">
+            <div class="card">
+              <h3>Total Portfolio Value</h3>
+              <p class="value">$65,423.00</p>
+            </div>
+            <div class="card">
+              <h3>Invested Amount</h3>
+              <p class="value">$50,000.00</p>
+            </div>
+            <div class="card">
+              <h3>Overall Profit/Loss</h3>
+              <p class="value" style="color: #00ff95">+$15,423 (+30.8%)</p>
+            </div>
+            <div class="card">
+              <h3>Allocation</h3>
+              <canvas id="allocationChart" height="150"></canvas>
+            </div>
+          </div>
+
+          <h3 style="color: #00ffa2; margin-bottom: 10px">Holdings</h3>
+          <div class="filter">
+            <input type="text" placeholder="Search coin..." />
+            <select>
+              <option>All</option>
+              <option>Gainers</option>
+              <option>Losers</option>
+            </select>
+            <input type="date" />
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Coin</th>
+                <th>Amount</th>
+                <th>Quantity</th>
+                <th>Buy Price</th>
+                <th>Current Price</th>
+                <th>Profit/Loss</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bitcoin (BTC)</td>
+                <td>$12,285</td>
+                <td>0.45</td>
+                <td>$20,000</td>
+                <td>$27,300</td>
+                <td style="color: #00ff95">+36.5%</td>
+                <td>2024-01-02</td>
+              </tr>
+              <tr>
+                <td>Ethereum (ETH)</td>
+                <td>$2,640</td>
+                <td>1.2</td>
+                <td>$1,600</td>
+                <td>$2,200</td>
+                <td style="color: #00ff95">+37.5%</td>
+                <td>2024-02-10</td>
+              </tr>
+              <tr>
+                <td>Solana (SOL)</td>
+                <td>$1,960</td>
+                <td>20</td>
+                <td>$80</td>
+                <td>$98</td>
+                <td style="color: #00ff95">+22.5%</td>
+                <td>2024-03-05</td>
+              </tr>
+              <tr>
+                <td>Shiba Inu (SHIB)</td>
+                <td>$7</td>
+                <td>1,000,000</td>
+                <td>$0.00001</td>
+                <td>$0.000007</td>
+                <td style="color: #ff4d4d">-30%</td>
+                <td>2024-04-01</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="export-btn">📥 Export Portfolio (CSV)</button>
+
+          <div class="card" id="calculator-card">
+            <h3>🧮 Profit & Loss Calculator</h3>
+            <form id="calcForm">
+              <label for="coin">Coin Name</label>
+              <input type="text" id="coin" placeholder="e.g. Bitcoin (BTC)" />
+
+              <label for="buyPrice">Buy Price (USD)</label>
+              <input
+                type="number"
+                id="buyPrice"
+                placeholder="e.g. 30000"
+                required
+              />
+
+              <label for="currentPrice">Current Price (USD)</label>
+              <input
+                type="number"
+                id="currentPrice"
+                placeholder="e.g. 42000"
+                required
+              />
+
+              <label for="quantity">Quantity</label>
+              <input
+                type="number"
+                id="quantity"
+                placeholder="e.g. 1.5"
+                required
+              />
+
+              <button type="submit">Calculate</button>
+              <button type="button" id="clearBtn" class="clear-btn">
+                Clear
+              </button>
+            </form>
+            <div class="result" id="calcResult"></div>
+          </div>
+
+          <div class="transactions">
+            <h3>Recent Transactions</h3>
+            <p>🟢 Bought 1.2 ETH at $1,600 <br /><span>Feb 10, 2024</span></p>
+            <p>🔴 Sold 0.1 BTC at $25,000 <br /><span>Mar 2, 2024</span></p>
+            <p>🟢 Bought 20 SOL at $80 <br /><span>Mar 5, 2024</span></p>
+            <p>🟢 Bought SHIB at $0.00001 <br /><span>Apr 1, 2024</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+      {% endblock %}
+   

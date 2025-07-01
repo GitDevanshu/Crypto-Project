@@ -1,0 +1,81 @@
+{% extends 'layouts/base2.html'%}
+{% load static %}
+{% block content %} 
+
+        
+          <h2>Manage Alerts</h2>
+          <div class="card">
+            <h3>Create New Alert</h3>
+            <form id="alertForm">
+              <select id="coin">
+                <option value="BTC">Bitcoin (BTC)</option>
+                <option value="ETH">Ethereum (ETH)</option>
+                <option value="SOL">Solana (SOL)</option>
+                <option value="DOGE">Dogecoin (DOGE)</option>
+              </select>
+
+              <select id="condition">
+                <option value="above">Above</option>
+                <option value="below">Below</option>
+              </select>
+
+              <div class="price-input-wrapper">
+                <span>$</span>
+                <input type="number" id="target" placeholder="USD" required />
+              </div>
+
+              <button type="submit">Create Alert</button>
+            </form>
+
+            <div class="alert-message" id="alertMsg">
+              🚨 Alert Triggered! Your condition has been met.
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Active Alerts</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Coin</th>
+                  <th>Condition</th>
+                  <th>Target Price</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="alertList">
+                <tr>
+                  <td>BTC</td>
+                  <td>Above $42000</td>
+                  <td>$42000</td>
+                  <td>Active</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <h3>Alert History</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Coin</th>
+                  <th>Triggered Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10:32 AM</td>
+                  <td>DOGE</td>
+                  <td>$0.192</td>
+                  <td>✅ Sent</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    
+    {% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'layouts/base2.html'%}
+{% load static %}
+{% block content %}
+        
+          <h2>Crypto News & Market Insights</h2>
+
+          <div class="card">
+            <h3>📈 Top Movers</h3>
+            <ul id="topMovers"></ul>
+          </div>
+
+          <div class="card">
+            <h3>📰 Headlines</h3>
+            <ul>
+              <li>
+                <span class="highlight">Bitcoin</span> crosses $70K after ETF
+                approval
+              </li>
+              <li>
+                <span class="highlight">Ethereum</span> staking record hits ATH
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>📊 Market Chart (Candlestick)</h3>
+
+            <select id="coinSelector">
+              <option value="btc">Bitcoin (BTC)</option>
+              <option value="eth">Ethereum (ETH)</option>
+              <option value="sol">Solana (SOL)</option>
+            </select>
+
+            <div id="candlestickChart" style="width: 100%; height: 400px"></div>
+          </div>
+
+          <div class="card">
+            <h3>🌍 Global Regulation Tracker</h3>
+            <table>
+              <tr>
+                <th>Region</th>
+                <th>Status</th>
+              </tr>
+              <tr>
+                <td>USA</td>
+                <td>✅ BTC ETF Approved</td>
+              </tr>
+              <tr>
+                <td>India</td>
+                <td>⚠️ 30% Tax Applies</td>
+              </tr>
+              <tr>
+                <td>EU</td>
+                <td>📜 MiCA Regulation Ongoing</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="card">
+            <h3>🔍 Search News</h3>
+            <input type="text" id="newsSearch" placeholder="Search news..." />
+            <ul id="searchResults"></ul>
+          </div>
+        </div>
+      </div>
+    
+{% endblock %}

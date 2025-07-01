@@ -1,0 +1,87 @@
+{% extends 'layouts/base2.html' %} 
+{% load static %}
+{% block content %}
+
+  <div class="cards">
+    <div class="card">
+      <h3>Portfolio Tracker</h3>
+      <p class="portfolio-amount">$65,423.00</p>
+      <p>Track the value of your crypto holdings</p>
+    </div>  
+
+    <div class="card">
+      <h3>Price Chart</h3>
+      <canvas id="priceChart" height="200"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Alerts</h3>
+      <div class="alert">
+        <span>ETH &gt; $2,200</span><span class="green">🟢</span>
+      </div>
+      <div class="alert">
+        <span>SOL &lt; $100</span><span class="red">🔴</span>
+      </div>
+      <button
+        style="
+          margin-top: 10px;
+          padding: 8px 16px;
+          background: #00ffa2;
+          color: #000;
+          border: none;
+          border-radius: 6px;
+          font-weight: bold;
+          cursor: pointer;
+        "
+      >
+        Create Alert
+      </button>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Live Crypto Prices</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Coin</th>
+            <th>Price</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bitcoin</td>
+            <td>$40,732</td>
+            <td class="change-up">+32%</td>
+          </tr>
+          <tr>
+            <td>Ethereum</td>
+            <td>$2,193</td>
+            <td class="change-down">-29%</td>
+          </tr>
+          <tr>
+            <td>Solana</td>
+            <td>$98.14</td>
+            <td class="change-up">+10%</td>
+          </tr>
+          <tr>
+            <td>Dogecoin</td>
+            <td>$0.187</td>
+            <td class="change-up">+35%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card news-feed">
+      <h3>News Feed</h3>
+      <p>Bitcoin Hits New All-Time High<br /><span>2h ago</span></p>
+      <p>Ethereum 2.0 Launch Date Announced<br /><span>2h ago</span></p>
+      <p>Is Solana the Next Big Thing?<br /><span>2h ago</span></p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

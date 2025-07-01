@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/base2.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}" /> 
+    <link rel="stylesheet" href="{% static 'css/alerts.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/news.css' %}" />
+  <body>
+    <nav>
+      <div class="logo">
+        <img
+          src="{% static 'images/CryptoLogo.png' %}"
+          alt="CoinSentinel Logo"
+        />
+      </div>
+
+      <div class="ticker-wrapper">
+        <div class="ticker-scroll" id="tickerScroll">
+          <span><strong>BTC:</strong> $40,732</span>
+          <span class="price-up">+2.4%</span>
+          <span><strong>ETH:</strong> $2,193</span>
+          <span class="price-down">-1.2%</span>
+          <span><strong>SOL:</strong> $98.14</span>
+          <span class="price-up">+3.1%</span>
+          <span><strong>DOGE:</strong> $0.187</span>
+          <span class="price-up">+0.9%</span>
+          <span><strong>BNB:</strong> $572</span>
+          <span class="price-down">-0.5%</span>
+          <span><strong>AVAX:</strong> $32.00</span>
+          <span class="price-up">+1.7%</span>
+          <span><strong>ADA:</strong> $0.42</span>
+          <span class="price-down">-3.2%</span>
+          <span><strong>MATIC:</strong> $0.81</span>
+          <span class="price-down">-0.8%</span>
+          <span><strong>XRP:</strong> $0.52</span>
+          <span class="price-up">+4.0%</span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <aside class="sidebar">
+        <a href="/dashboard/"
+          ><img
+            src="{% static 'images/icons/dashLogo.png' %}"
+            alt="Dashboard Logo"
+          />Dashboard</a
+        >
+        <a href="/portfolio/"
+          ><img
+            src="{% static 'images/icons/portLogo.png' %}"
+            alt="Portfolio Logo"
+          />Portfolio</a
+        >
+        <a href="/alerts/"
+          ><img
+            src="{% static 'images/icons/alertsLogo.png' %}"
+            alt="Alerts Logo"
+          />Alerts</a
+        >
+        <a href="/news/"
+          ><img
+            src="{% static 'images/icons/newsLogo.png' %}"
+            alt="News Logo"
+          />News</a
+        >
+      </aside>
+    </div>
+
+    <main class="main">
+      {% block content %}{% endblock %}
+      <script src="{% static 'js/dashboard.js' %}"></script>
+      <script src="{% static 'js/portfolio.js' %}"></script>
+      <script src="{% static 'js/alerts.js' %}"></script>
+      <script src="{% static 'js/news.js' %}"></script>
+    </main>
+  </body>
+</html>
